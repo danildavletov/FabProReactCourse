@@ -1,6 +1,8 @@
 import Button from '@mui/material/Button';
 
-const Card = function () {
+const Card = function (props) {
+  const food = props.foodVolume ? props.foodVolume : "";
+  
   return (
     <div className="card">
       <img
@@ -10,7 +12,10 @@ const Card = function () {
       />
       <div className="card__description">
         <h2>Котик первый</h2>
-        <p>asdsddsa</p>
+        {food ? (
+          <p>Котик кушает {food}кг</p>
+        ) : "" }
+
         <Button variant="contained">Погладить кота</Button>
       </div>
     </div>

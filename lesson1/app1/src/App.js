@@ -10,10 +10,7 @@ function App() {
     <div className="container">
 
       <h1>Cats</h1>
-      <Button hint="Нажми меня" customClassName="btn-primary">
-        <i>sdfhgsd</i>
-      </Button>
-      <Card />
+      <Card foodVolume={2}/>
       <Card />
       <Card />
       <Card />
