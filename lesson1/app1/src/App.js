@@ -20,7 +20,8 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     setCats([
-      {name: "Новый кот без имени"}
+      {name: "Новый кот без имени"},
+      ...cats,
     ]);
   };
   return (
@@ -31,8 +32,6 @@ function App() {
         <Card name={cat.name} foodVolume={cat.consumption} />
       ))}
       <button onClick={handleClick}>Добавить котов</button>
-      <br />
-      <br />
     </div>
   );
 }
