@@ -11,7 +11,7 @@ const Card = function (props) {
         className="card__image"
       />
       <div className="card__description">
-        <h2>Котик первый</h2>
+        <h2>{props.name}</h2>
         {food ? (
           <p>Котик кушает {food}кг</p>
         ) : "" }
