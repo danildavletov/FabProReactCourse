@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import "./App.scss";
 import Card from "./components/Card";
 import { Button } from "@mui/material";
@@ -26,19 +26,22 @@ function App() {
   const [cats, setCats] = useState(catsInitial);
   const [filteredCats, setFilteredCats] = useState(cats);
 
+  const searchCatRef = useRef();
+
   const handleClick = (element) => {
     element.preventDefault();
     setCats([{ name: "Новый кот без имени" }, ...cats]);
   };
   const handleChange = (e) => {
-    let value = e.target.value;
-    let filter = cats.filter((cat) => cat.name.includes(value));
-    setFilteredCats(filter);
+    applyFilter(searchCatRef.current.value)
   };
-
+  const applyFilter = (value = "")=>{
+    let filtered = cats.filter((cat) => cat.name.includes(value));
+    setFilteredCats(filtered);
+  }
   useEffect(()=>{
     console.log("Котик добавлен");
-    setFilteredCats(cats);
+    applyFilter(searchCatRef.current.value);
   },[cats]);
   return (
     <div className="container">
@@ -49,6 +52,10 @@ function App() {
         id="outlined-basic"
         label="Фильтр котов"
         variant="outlined"
+        inputRef={searchCatRef}
+        margin="normal"
+        fullWidth 
+
       />
 
       {filteredCats.map((cat) => (
