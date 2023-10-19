@@ -6,6 +6,7 @@ import { TextField } from "@mui/material";
 
 import imgCat1 from "./assets/img/cat1.jpg";
 import AddIcon from '@mui/icons-material/Add';
+import Form from "./components/Form/Form";
 
 let catsInitial = [
   {
@@ -57,6 +58,8 @@ function App() {
         fullWidth 
 
       />
+
+      <Form/>
 
       {filteredCats.map((cat) => (
         <Card name={cat.name} foodVolume={cat.consumption} image={cat.image}/>
