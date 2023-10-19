@@ -1,0 +1,8 @@
+.input{
+    padding: 20px 0;
+    margin: 1em;
+
+}
+.input.error{
+    background-color: crimson;
+}

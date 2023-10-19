@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import "./Form.css";
 
 export default () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -21,6 +22,7 @@ export default () => {
         ref={nameRef}
         // style={styles}
         style={isEmpty? {...styles, borderColor: "red"} : styles}
+        className={`input ${isEmpty? "error": ""}`}
         type="text" 
         placeholder="Введите имя" />
       </p>
