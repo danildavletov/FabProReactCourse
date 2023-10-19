@@ -64,7 +64,6 @@ function App() {
       {filteredCats.map((cat) => (
         <Card name={cat.name} foodVolume={cat.consumption} image={cat.image}/>
       ))}
-
       <Button variant="contained" color="success" size="large" startIcon={<AddIcon/>}  onClick={handleClick}>Добавить котов</Button>
     </div>
   );

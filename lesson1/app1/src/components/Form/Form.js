@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import "./Form.css";
+import classes from "./Form.module.css"; //CSS modules
 
 export default () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -22,7 +22,8 @@ export default () => {
         ref={nameRef}
         // style={styles}
         style={isEmpty? {...styles, borderColor: "red"} : styles}
-        className={`input ${isEmpty? "error": ""}`}
+        // className={`input ${isEmpty? "error": ""}`}
+        className={classes.input}
         type="text" 
         placeholder="Введите имя" />
       </p>
