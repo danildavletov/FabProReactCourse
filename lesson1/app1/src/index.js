@@ -1,13 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Settings from './pages/Settings/Settings';
+import Main from './pages/Main/Main';
+import Cats from './pages/Cats/Cats';
+
+const router = createBrowserRouter([
+  {
+   path: "/",
+   element: <Main />,
+   errorElement: <p>Ошибка маршрута</p>
+  },
+  {
+    path: "/settings",
+    element: <Settings/>
+  },
+  {
+    path: "/cats/:catId",
+    element: <Cats/>
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
