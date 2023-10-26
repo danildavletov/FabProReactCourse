@@ -36,6 +36,11 @@ function App() {
   const handleChange = (e) => {
     applyFilter(searchCatRef.current.value)
   };
+
+  const handleSubmit = (data) => {
+    setCats([data, ...cats]);
+  }
+  
   const applyFilter = (value = "")=>{
     let filtered = cats.filter((cat) => cat.name.includes(value));
     setFilteredCats(filtered);
@@ -59,7 +64,7 @@ function App() {
 
       />
 
-      <Form/>
+      <Form onSubmit={handleSubmit}/>
 
       {filteredCats.map((cat) => (
         <Card name={cat.name} foodVolume={cat.consumption} image={cat.image}/>

@@ -1,13 +1,18 @@
 import { useState, useRef } from "react";
 import classes from "./Form.module.css"; //CSS modules
 
-export default () => {
+export default (props) => {
   const [isEmpty, setIsEmpty] = useState(false);
   const nameRef = useRef();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setIsEmpty(!nameRef.current.value);
+    const newData = {
+      name: nameRef.current.value,
+      // other
+    }
+    props.onSubmit(newData);
   }
   const styles = {
     fontSize: "40px",
