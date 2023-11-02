@@ -77,7 +77,7 @@ function Main() {
       <Form onSubmit={handleSubmit} />
 
       {filteredCats.map((cat) => (
-        <Card name={cat.name} foodVolume={cat.consumption} image={cat.image} />
+        <Card name={cat.name} foodVolume={cat.consumption} image={cat.image} key={Math.floor(Math.random()*100)}/>
       ))}
       <Button
         variant="contained"
