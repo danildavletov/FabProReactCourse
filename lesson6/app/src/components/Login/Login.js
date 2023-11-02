@@ -1,13 +1,17 @@
+import React, {useState} from "react";
 import Button from "@mui/material/Button";
-import { useContext } from "react";
-import AppContext from "../../context/app-context";
 
-export default () => {
-  const ctx = useContext(AppContext);
+export default (props) => {
+  const handleLogin = () =>{
+    props.onLogin();
+  }
+  const handleLogout = () =>{
+    props.onLogout();
+  }
   return (
     <div>
-      <Button onClick={ctx.loginHandler}>Login</Button>
-      <Button onClick={ctx.logoutHandler}>Logout</Button>
+      <Button onClick={handleLogin}>Login</Button>
+      <Button onClick={handleLogout}>Logout</Button>
     </div>
   );
 };
