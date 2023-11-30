@@ -13,14 +13,14 @@ function Main() {
           <Link to="/page1">Страница 1</Link>
           <Link to="/page2">Страница 2</Link>
           <Link to="/users">Users</Link>
-          <p>{ctx.isLoggedIn ? "пользователь вошел" : "не авторизован"}</p>
+          <p>{ctx.user ? ctx.user.email : "не авторизован"}</p>
         </Breadcrumbs>
       </header>
       <Outlet />
       <footer style={{ background: "#ffaaee" }}>
         <Login
-          onLogin={() => ctx.setLoggedIn()}
-          onLogout={() => ctx.setLoggedOut()}
+          onLogin={() => ctx.onLogin("test@example.com", "111111")}
+          onLogout={() => ctx.onLogout()}
         />
       </footer>
     </div>

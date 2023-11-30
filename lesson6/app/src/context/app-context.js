@@ -1,9 +1,9 @@
 import React from "react";
 
 const AppContext = React.createContext({
-    isLoggedIn: false,
-    setLoggedIn: () => {},
-    setLoggedOut: () => {}
+    user: false,
+    onLogin: (email, password) => {},
+    onLogout: () => {}
 })
 
 export default AppContext;

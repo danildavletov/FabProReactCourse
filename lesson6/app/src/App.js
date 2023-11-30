@@ -5,6 +5,13 @@ import InnerPage from "./pages/InnerPage/InnerPage";
 import AppContext from "./context/app-context";
 import ShowUsers from "./components/ShowUsers/ShowUsers";
 
+// Импортируем объект инициализированного приложения firebase с нашими настройками
+import {app as firebaseApp} from "./firebase";
+// используем встроенные функции авторизации firebase
+// https://firebase.google.com/docs/auth/web/start?hl=ru&authuser=0
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,12 +31,31 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  const [isLoggedIn, setIsloggedIn] = useState(false);
+  const [user, setUser] = useState(false);
+  // Подключаем авторизацию
+  const auth = getAuth(firebaseApp);
+
+  // Обработчик входа через email-пароль
+  const handleLogin = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      setUser(user);
+    })
+    .catch((error) => {
+      console.log(error.code, error.message);
+    });
+  }
+
+  const handleLogout = () =>{
+    setUser(false);
+    signOut(auth);
+  }
   return (
     <AppContext.Provider value={{
-      isLoggedIn: isLoggedIn,
-      setLoggedIn: () => {setIsloggedIn(true)},
-      setLoggedOut: () => {setIsloggedIn(false)}
+      user: user,
+      onLogin: handleLogin,
+      onLogout: handleLogout
     }}>
       <RouterProvider router={router} />
     </AppContext.Provider>
